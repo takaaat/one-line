@@ -1,6 +1,6 @@
 "use server";
 
-import { auth } from "@/src/lib/auth";
+import { auth } from "@/lib/auth";
 import { LoginState } from "./types";
 
 export async function loginAction(
@@ -25,5 +25,5 @@ export async function loginAction(
   if (!response.ok) {
     return { error: "ログインに失敗しました。" };
   }
-  return { error: "ろぐいんせいこう" };
+  return { error: "ログイン成功" }; // todo
 }
