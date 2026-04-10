@@ -1,4 +1,10 @@
-export default function Page() {
+"use server";
+
+import { db } from "@/db/drizzle";
+
+export default async function Page() {
+  const notes = await db.query.note.findMany();
+  console.log(notes);
   return (
     <div>
       <div>one-line</div>
