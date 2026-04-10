@@ -1,17 +1,18 @@
 "use client";
 
 import { useActionState, useState } from "react";
-import { loginAction } from "./action";
+import { signupAction } from "./action";
 
-export type LoginState = {
+export type SignupState = {
   error: string | null;
 };
 
-export default function LoginPage() {
+export default function SignupPage() {
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [state, formAction, loading] = useActionState<LoginState, FormData>(
-    loginAction,
+  const [state, formAction, loading] = useActionState<SignupState, FormData>(
+    signupAction,
     { error: null },
   );
 
@@ -20,10 +21,22 @@ export default function LoginPage() {
       <div className="card w-full max-w-md bg-base-100 shadow-xl">
         <div className="card-body">
           <div className="my-2 text-center">
-            <h1 className="text-3xl font-bold">ログイン</h1>
+            <h1 className="text-3xl font-bold">新規登録</h1>
           </div>
 
           <form action={formAction} className="space-y-4">
+            <fieldset className="fieldset">
+              <legend className="fieldset-legend">ユーザー名</legend>
+              <input
+                type="text"
+                name="username"
+                className="input w-full"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+              />
+            </fieldset>
+
             <fieldset className="fieldset">
               <legend className="fieldset-legend">メールアドレス</legend>
               <input
@@ -60,14 +73,14 @@ export default function LoginPage() {
               className={`btn btn-primary w-full mt-2 ${loading ? "btn-disabled" : ""}`}
               disabled={loading}
             >
-              {loading ? "ログイン中..." : "ログイン"}
+              {loading ? "登録中..." : "アカウント登録"}
             </button>
           </form>
 
           <p className="text-center text-sm text-base-content/70 mt-2">
-            アカウントをお持ちでないですか？{" "}
-            <a href="/signup" className="link link-primary">
-              新規登録
+            アカウントを既にお持ちの場合{" "}
+            <a href="/login" className="link link-primary">
+              ログイン
             </a>
           </p>
         </div>

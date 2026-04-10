@@ -1,7 +1,7 @@
 "use server";
 
 import { auth } from "@/lib/auth";
-import { LoginState } from "./types";
+import { LoginState } from "./page";
 
 export async function loginAction(
   _prevState: LoginState,
