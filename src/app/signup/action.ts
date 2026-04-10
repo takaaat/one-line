@@ -2,6 +2,7 @@
 
 import { auth } from "@/lib/auth";
 import { SignupState } from "./page";
+import { redirect } from "next/navigation";
 
 export async function signupAction(
   _prevState: SignupState,
@@ -33,5 +34,5 @@ export async function signupAction(
   if (!response.ok) {
     return { error: "登録に失敗しました。" };
   }
-  return { error: "新規登録成功" }; // todo
+  redirect("/q");
 }

@@ -2,6 +2,7 @@
 
 import { auth } from "@/lib/auth";
 import { LoginState } from "./page";
+import { redirect } from "next/navigation";
 
 export async function loginAction(
   _prevState: LoginState,
@@ -25,5 +26,5 @@ export async function loginAction(
   if (!response.ok) {
     return { error: "ログインに失敗しました。" };
   }
-  return { error: "ログイン成功" }; // todo
+  redirect("/q");
 }
