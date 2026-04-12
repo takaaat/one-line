@@ -1,11 +1,11 @@
 import { relations } from "drizzle-orm";
-import { integer } from "drizzle-orm/pg-core";
+import { uuid } from "drizzle-orm/pg-core";
 import { pgTable, text, timestamp, boolean, index } from "drizzle-orm/pg-core";
 
 export const note = pgTable(
   "note",
   {
-    id: integer("id").primaryKey(),
+    id: uuid("id").defaultRandom().primaryKey(),
     content: text("text").notNull(),
     isArchived: boolean("is_archived").default(false).notNull(),
     createdAt: timestamp("created_at").defaultNow().notNull(),
