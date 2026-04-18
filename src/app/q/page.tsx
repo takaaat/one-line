@@ -23,10 +23,7 @@ export default async function Page() {
 
   return (
     <div>
-      <div>one-line</div>
-      <div>
-        <SearchView notes={notes} />
-      </div>
+      <SearchView notes={notes} />
     </div>
   );
 }
