@@ -2,7 +2,7 @@
 
 import { note } from "@/db/schema";
 import { useState } from "react";
-import { addNoteAction } from "./action";
+import { addNoteAction, deleteNoteAction } from "./action";
 
 type Props = {
   notes: (typeof note.$inferSelect)[];
@@ -62,7 +62,17 @@ export default function SearchView({ notes }: Props) {
                 key={note.id}
                 className="rounded-2xl px-3 py-3 text-[15px] leading-6 text-slate-700 transition odd:bg-stone-50 even:bg-white hover:bg-emerald-50/60"
               >
-                {note.content}
+                <div className="flex justify-between px-2">
+                  <div>{note.content}</div>
+                  <div
+                    className="text-gray-500 cursor-pointer hover:text-red-300"
+                    onClick={async () => {
+                      await deleteNoteAction(note.id);
+                    }}
+                  >
+                    x
+                  </div>
+                </div>
               </div>
             );
           })}
