@@ -15,6 +15,13 @@ export default function SearchView({ notes }: Props) {
     note.content.includes(searchQuery),
   );
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!e.nativeEvent.isComposing && e.key == "Enter") {
+      setSearchQuery("");
+      addNoteAction(searchQuery);
+    }
+  };
+
   return (
     <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 py-6 text-slate-800">
       <div className="rounded-3xl border border-slate-200 bg-stone-50/90 p-4 shadow-[0_12px_30px_rgba(15,23,42,0.05)] backdrop-blur">
@@ -29,6 +36,7 @@ export default function SearchView({ notes }: Props) {
               onChange={(e) => {
                 setSearchQuery(e.target.value);
               }}
+              onKeyDown={handleKeyDown}
             />
           </label>
           <button
