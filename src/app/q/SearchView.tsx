@@ -29,6 +29,7 @@ export default function SearchView({ notes }: Props) {
           <label className="flex-1">
             <span className="sr-only">メモを検索または入力</span>
             <input
+              autoFocus
               type="text"
               placeholder="入力して検索"
               className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-[15px] text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-slate-300 focus:ring-4 focus:ring-emerald-100"
